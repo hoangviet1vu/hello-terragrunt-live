@@ -17,19 +17,19 @@ Establish the foundational Terragrunt live infrastructure: root configuration wi
     - Add `generate "provider"` block that writes `provider.tf` with AWS provider region from `get_env("AWS_REGION")`
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 6.1, 6.2, 6.3, 6.4, 8.1, 8.2, 8.3, 8.4_
 
-- [ ] 2. Create EXAMPLE tenant folder structure and leaf unit
+- [x] 2. Create EXAMPLE tenant folder structure and leaf unit
   - [x] 2.1 Create directory `EXAMPLE/dev/` at the repository root
     - Tenant folder is uppercase (`EXAMPLE`)
     - Environment subfolder is lowercase (`dev`)
     - _Requirements: 2.1, 2.2, 2.3_
 
-  - [ ] 2.2 Create `EXAMPLE/dev/terragrunt.hcl` leaf unit
+  - [x] 2.2 Create `EXAMPLE/dev/terragrunt.hcl` leaf unit
     - Add `include "root"` block with `path = find_in_parent_folders()`
     - Add `terraform` block with `source = "git::https://github.com/hoangviet1vu/hello-terragrunt-modules.git//tenant-base?ref=v1.0.0"`
     - Add `inputs` block with `tenant_name = "EXAMPLE"`, `environment = "dev"`, `enable_dynamodb = false`, `enable_ecr = true`
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 4.1, 4.2, 4.3_
 
-- [ ] 3. Checkpoint - Verify root and leaf configuration
+- [x] 3. Checkpoint - Verify root and leaf configuration
   - Ensure `terraform fmt -check -recursive .` passes on all HCL files, ask the user if questions arise.
 
 - [x] 4. Update .gitignore for Terraform state exclusions
@@ -55,7 +55,7 @@ Establish the foundational Terragrunt live infrastructure: root configuration wi
     - Document `AWS_REGION` environment variable: purpose, required status, example (`export AWS_REGION=ap-southeast-2`)
     - _Requirements: 7.3, 7.4, 7.6, 7.8_
 
-- [ ] 6. Final checkpoint - Format and lint
+- [x] 6. Final checkpoint - Format and lint
   - Run `terraform fmt -recursive .` and `tflint --recursive` to validate all files. Ensure all checks pass, ask the user if questions arise.
 
 ## Notes
