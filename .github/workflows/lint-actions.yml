@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       # Install a pinned actionlint binary from the official release page rather
       # than a moving reference, so lint results are reproducible. shellcheck is
       # preinstalled on ubuntu-latest, so actionlint also lints embedded `run`

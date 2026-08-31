@@ -38,7 +38,7 @@ jobs:
       # Req 3.1: full history is required so the merge commit's first parent is
       # present locally for the first-parent diff below.
       - name: Checkout with full history
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       # Req 2, 3, 5: compute the set of added/modified leaf units by diffing the
@@ -95,7 +95,7 @@ jobs:
       # present on the runner for the validation and provisioning steps
       # (tasks 11.3-11.5).
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       # Req 5.6/4.4: fail this leg early if any matrix field is missing/empty or
       # the leaf path is malformed, before any Terragrunt or remote-state access.
       - name: Validate matrix entry
@@ -159,4 +159,5 @@ jobs:
         working-directory: ${{ matrix.workDir }}
         env:
           WORKDIR: ${{ matrix.workDir }}
-        run: "$GITHUB_WORKSPACE/.github/scripts/init_apply_gate.sh"
+        run: |
+          "$GITHUB_WORKSPACE/.github/scripts/init_apply_gate.sh"
