@@ -1,0 +1,5 @@
+# Development / test dependencies for the detect-leaves logic core.
+# Pinned per design (Testing Strategy): Hypothesis for property-based tests,
+# pytest for unit/example tests.
+hypothesis==6.112.1
+pytest==8.3.3

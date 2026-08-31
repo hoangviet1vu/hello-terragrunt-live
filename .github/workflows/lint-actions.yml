@@ -1,0 +1,45 @@
+name: lint-actions
+
+# Static validation of the repository's GitHub Actions workflows.
+# Runs actionlint to catch YAML/expression/context errors and to validate the
+# structural wiring of the provisioning workflow: the pull_request trigger,
+# the `if` gates, `environment: dev`, matrix wiring, and `fail-fast: false`.
+# (Design "Workflow-level validation": covers structural criteria 1.2-1.4,
+# 6.1-6.3, 5.7, 10.4, 11.3-11.5.)
+on:
+  push:
+    paths:
+      - .github/workflows/**
+  pull_request:
+    paths:
+      - .github/workflows/**
+
+# Least-privilege: linting only needs to read the repository contents.
+permissions:
+  contents: read
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      # Install a pinned actionlint binary from the official release page rather
+      # than a moving reference, so lint results are reproducible. shellcheck is
+      # preinstalled on ubuntu-latest, so actionlint also lints embedded `run`
+      # scripts.
+      - name: Install actionlint
+        env:
+          ACTIONLINT_VERSION: 1.7.7
+        run: |
+          set -euo pipefail
+          curl -sSLo actionlint.tar.gz \
+            "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          tar -xzf actionlint.tar.gz actionlint
+          chmod +x actionlint
+          ./actionlint --version
+      # Lint every workflow under .github/workflows. actionlint discovers them
+      # automatically when run with no file arguments; -color keeps the
+      # annotations readable in the job log.
+      - name: Run actionlint
+        run: ./actionlint -color
