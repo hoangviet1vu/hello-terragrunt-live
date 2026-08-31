@@ -28,19 +28,22 @@ jobs:
       matrix: ${{ steps.build.outputs.matrix }}
       has_units: ${{ steps.build.outputs.has_units }}
     steps:
-      # Req 1.3/1.5: evaluate the merged state before any change detection.
-      # The guard helper fails loudly when merged is neither "true" nor
-      # "false" (indeterminable payload) instead of silently provisioning.
-      - name: Guard merged state
-        env:
-          MERGED: ${{ github.event.pull_request.merged }}
-        run: ./.github/scripts/guard_merged_state.sh
-      # Req 3.1: full history is required so the merge commit's first parent is
-      # present locally for the first-parent diff below.
+      # Checkout runs first so the guard/detect helper scripts below exist on
+      # the runner. Req 3.1: full history is required so the merge commit's
+      # first parent is present locally for the first-parent diff below.
       - name: Checkout with full history
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+      # Req 1.3/1.5: evaluate the merged state before any change detection
+      # (i.e. before the git diff / matrix-build step below -- checkout alone
+      # does not detect changes). The guard helper fails loudly when merged is
+      # neither "true" nor "false" (indeterminable payload) instead of
+      # silently provisioning.
+      - name: Guard merged state
+        env:
+          MERGED: ${{ github.event.pull_request.merged }}
+        run: ./.github/scripts/guard_merged_state.sh
       # Req 2, 3, 5: compute the set of added/modified leaf units by diffing the
       # merge commit against its first parent, then reduce it to a JSON matrix.
       #
