@@ -7,7 +7,7 @@ terraform {
 }
 
 inputs = {
-  tenant_name     = "mycompany"
+  tenant_name     = "MYCOMPANY1"
   environment     = "dev"
   enable_dynamodb = false
   enable_ecr      = true
