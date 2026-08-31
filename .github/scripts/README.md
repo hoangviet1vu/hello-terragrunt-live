@@ -11,6 +11,28 @@ which `<TENANT>/<env>/terragrunt.hcl` "leaf" units changed, and runs
 `terragrunt init` + `terragrunt apply` against each one, in its own job, bound
 to the `dev` GitHub Environment.
 
+## Table of Contents
+
+- [1. What runs on GitHub Actions, and what each script does](#1-what-runs-on-github-actions-and-what-each-script-does)
+  - [`detect` job](#detect-job)
+  - [`provision` job (one instance per matrix entry, `fail-fast: false`)](#provision-job-one-instance-per-matrix-entry-fail-fast-false)
+  - [`strategy.fail-fast: false` and aggregation](#strategyfail-fast-false-and-aggregation)
+  - [Not wired into the workflow (manual/optional)](#not-wired-into-the-workflow-manualoptional)
+  - [`.github/workflows/lint-actions.yml`](#githubworkflowslint-actionsyml)
+- [2. Technical design of the Python code](#2-technical-design-of-the-python-code)
+  - [2.1 Design principle: pure functions + a thin CLI shell](#21-design-principle-pure-functions--a-thin-cli-shell)
+  - [2.2 `filter_leaves` — the path filter](#22-filter_leaves--the-path-filter)
+  - [2.3 `parse_leaf` — the Path_Parser](#23-parse_leaf--the-path_parser)
+  - [2.4 `build_matrix` — composition + the 256 cap](#24-build_matrix--composition--the-256-cap)
+  - [2.5 `classify_source` — Source_Scheme classifier](#25-classify_source--source_scheme-classifier)
+  - [2.6 CLI wrapper (`main`)](#26-cli-wrapper-main)
+- [3. Building and running the tests](#3-building-and-running-the-tests)
+  - [3.1 Layout](#31-layout)
+  - [3.2 Set up a virtual environment](#32-set-up-a-virtual-environment)
+  - [3.3 Run the tests](#33-run-the-tests)
+  - [3.4 actionlint (workflow YAML, not Python)](#34-actionlint-workflow-yaml-not-python)
+  - [3.5 What's *not* covered by `pytest`](#35-whats-not-covered-by-pytest)
+
 ---
 
 ## 1. What runs on GitHub Actions, and what each script does

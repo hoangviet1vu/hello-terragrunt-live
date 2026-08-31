@@ -4,17 +4,24 @@ Live infrastructure: one Terragrunt unit per tenant + environment. Pulls
 modules from
 [hello-terragrunt-modules](https://github.com/hoangviet1vu/hello-terragrunt-modules).
 
+## Table of Contents
+
+- [Layout](#layout)
+- [Before you run](#before-you-run)
+- [Run](#run)
+- [Auth note — private modules repo](#auth-note--private-modules-repo)
+
 ## Layout
 
 ```
 terragrunt.hcl            # root: state backend + AWS provider
-PRDCV/
+SAMPLETENANT/
   dev/terragrunt.hcl      # module v1.0.0, dynamodb=on,  ecr=off
   prod/terragrunt.hcl     # module v1.0.0, dynamodb=on,  ecr=on
 ```
 
 Each leaf pins a module version (`?ref=`) and passes the per-env inputs.
-Add a tenant by copying `PRDCV/` to a new folder; add an environment by
+Add a tenant by copying `SAMPLETENANT/` to a new folder; add an environment by
 copying a leaf.
 
 ## Before you run
@@ -43,12 +50,12 @@ Then ensure:
 ## Run
 
 ```bash
-cd PRDCV/dev
+cd SAMPLETENANT/dev
 terragrunt plan
 terragrunt apply
 ```
 
-State lands at `s3://<state-bucket>/PRDCV/dev/terraform.tfstate`
+State lands at `s3://<state-bucket>/SAMPLETENANT/dev/terraform.tfstate`
 (the key is derived from the folder path), fully isolated per tenant/env.
 
 ## Auth note — private modules repo
