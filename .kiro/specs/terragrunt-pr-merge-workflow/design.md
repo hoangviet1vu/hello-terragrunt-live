@@ -140,11 +140,20 @@ list of leaf-unit paths. (Requirements 3.1–3.5)
 - Requires full history: checkout uses `fetch-depth: 0` so the merge commit's first
   parent is present locally (Req 3.1). The merge SHA is `github.event.pull_request.merge_commit_sha`.
 - Computes the change set with:
-  `git diff --name-only --diff-filter=AM "<merge_sha>^1" "<merge_sha>"`
+  `git diff --no-renames --name-only --diff-filter=AM "<merge_sha>^1" "<merge_sha>"`
   - `--diff-filter=AM` retains only **A**dded and **M**odified files, excluding deleted
-    and renamed-away files (Req 3.3). (`--diff-filter=AM` reports the new name of a
-    rename as `A`/`M`, so a rename *into* a valid leaf path is correctly included, and a
-    rename *away from* a leaf path drops the old path.)
+    files (Req 3.3).
+  - `--no-renames` is required for that inclusion to hold: git's default rename
+    detection pairs a deleted path and an added path into a single `R` (renamed) entry
+    whenever their content is similar enough, and `R` matches neither `A` nor `M` in
+    `--diff-filter=AM`. Without `--no-renames`, a leaf whose path *and* content both
+    change in the same commit (e.g. a tenant directory rename plus an input edit) is
+    silently dropped from the change set instead of being treated as added — this was
+    observed in production (a `mycompany/dev` → `MYCOMPANY/dev` rename with an edited
+    `tenant_name` produced an empty matrix and a silently skipped `provision` job).
+    `--no-renames` forces every rename to report as a plain delete of the old path
+    (excluded) plus an add of the new path (included), so a rename *into* a valid leaf
+    path is reliably included and a rename *away from* one is reliably dropped.
   - If the parent commit or merge SHA is unavailable (shallow clone, missing history),
     `git diff` exits non-zero; the step fails the workflow with a clear error (Req 3.5).
 - Passes each surviving path to the Path filter.

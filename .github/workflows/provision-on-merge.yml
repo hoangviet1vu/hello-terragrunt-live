@@ -51,6 +51,15 @@ jobs:
       # list on stdin and writes "matrix=<json>" / "has_units=<bool>" lines to
       # its stdout, which we redirect into $GITHUB_OUTPUT.
       #
+      # --no-renames: without it, a leaf whose path AND content both change in
+      # the same PR (e.g. a tenant folder rename plus an input edit) can be
+      # similar enough for git to report it as a single "R" (renamed) entry
+      # instead of separate D/A entries. --diff-filter=AM does not match "R",
+      # so the renamed-into leaf path would be silently dropped from the
+      # change set. --no-renames forces every such pair to report as a
+      # deletion of the old path plus an addition of the new one, so a rename
+      # into a valid leaf path is reliably picked up as "A" (Req 3.3).
+      #
       # Req 3.5: if the first-parent diff cannot be performed (shallow clone /
       # missing history), git diff exits non-zero; we surface a clear error and
       # fail the job before producing any matrix.
@@ -60,7 +69,7 @@ jobs:
           MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
         run: |
           set -euo pipefail
-          if ! changed_files="$(git diff --name-only --diff-filter=AM "${MERGE_SHA}^1" "${MERGE_SHA}")"; then
+          if ! changed_files="$(git diff --no-renames --name-only --diff-filter=AM "${MERGE_SHA}^1" "${MERGE_SHA}")"; then
             echo "::error::change detection could not be completed"
             exit 1
           fi
