@@ -1,0 +1,13 @@
+[tool.pytest.ini_options]
+# Test discovery for the detect-leaves logic core.
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-ra"
+
+[tool.hypothesis]
+# Minimum of 100 examples per property test, per design Testing Strategy.
+# The "ci" profile is registered and loaded in tests/conftest.py; this section
+# documents the intended floor for tooling that reads pyproject settings.
+max_examples = 100

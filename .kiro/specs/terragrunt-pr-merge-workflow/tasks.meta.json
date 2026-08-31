@@ -1,0 +1,723 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Scaffold the logic-core project and test harness": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172026146
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172057782
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172471590
+      }
+    ],
+    "2.1 Implement `filter_leaves` in `detect_leaves.py`": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172026664
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172477414
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172712709
+      }
+    ],
+    "2.2 Write property test for filter correctness": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172027073
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172721738
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172974969
+      }
+    ],
+    "2.3 Write property test for the exclusion invariant": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172027515
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172723041
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172975948
+      }
+    ],
+    "3.1 Implement `parse_leaf` in `detect_leaves.py`": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172027839
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172725520
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172978256
+      }
+    ],
+    "3.2 Write property test for parse correctness": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172028269
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172985424
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173328923
+      }
+    ],
+    "3.3 Write example test asserting no env validation branch": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172028746
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172986749
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173329539
+      }
+    ],
+    "4.1 Implement `build_matrix` in `detect_leaves.py`": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172029128
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172987857
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173330778
+      }
+    ],
+    "4.2 Write property test for entry completeness": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172029449
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173340041
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173693820
+      }
+    ],
+    "4.3 Write property test for count and empty behavior": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172029928
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173341411
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173695118
+      }
+    ],
+    "4.4 Write property test for matrix cap enforcement": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172030369
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173342427
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173696319
+      }
+    ],
+    "5.1 Implement `classify_source` in `detect_leaves.py`": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172030781
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172478509
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172713762
+      }
+    ],
+    "5.2 Write property test for source scheme classification": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172031210
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172724538
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172977330
+      }
+    ],
+    "6.1 Add a `main()` entry point to `detect_leaves.py`": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172031619
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173338848
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173697519
+      }
+    ],
+    "6.2 Write unit tests for the CLI end-to-end (stdin -> stdout)": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172032077
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173705233
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175280940
+      }
+    ],
+    "7. Checkpoint - logic core complete and tested": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172032538
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788180063020
+      }
+    ],
+    "8.1 Implement a merged-state guard helper": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172032940
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173706527
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175281942
+      }
+    ],
+    "8.2 Write unit tests for the merged-state guard": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172033385
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175493147
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175736738
+      }
+    ],
+    "8.3 Implement a validate-entry helper": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172033857
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173707676
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175283281
+      }
+    ],
+    "8.4 Write unit tests for validate-entry": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172034236
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175494130
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175739830
+      }
+    ],
+    "8.5 Implement a validate-secrets/vars helper": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172034696
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173709094
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175284704
+      }
+    ],
+    "8.6 Write unit tests for validate-secrets/vars ordering": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172035117
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175495543
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175735446
+      }
+    ],
+    "8.7 Implement the module-auth-by-scheme helper": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172035587
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173710044
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175285699
+      }
+    ],
+    "8.8 Write unit tests for the auth handler": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172036035
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175496939
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175733925
+      }
+    ],
+    "8.9 Implement the init->apply gate helper": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172036517
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175294069
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175484538
+      }
+    ],
+    "8.10 Write unit tests for the init->apply gate": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172036920
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175497977
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175739116
+      }
+    ],
+    "9. Checkpoint - step logic helpers complete and tested": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172037219
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788180071105
+      }
+    ],
+    "10.1 Create the workflow file with trigger and merged-state gate": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172037699
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175747619
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175885869
+      }
+    ],
+    "10.2 Implement the detect job change detection and matrix output": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172038147
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175892177
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176108460
+      }
+    ],
+    "11.1 Define the provision job matrix, gating, and environment binding": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172038577
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176116102
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176210638
+      }
+    ],
+    "11.2 Add validate-entry and validate-secrets/vars steps": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172039037
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176218149
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176448516
+      }
+    ],
+    "11.3 Add setup and environment-export steps": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172039325
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176455136
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176537531
+      }
+    ],
+    "11.4 Add the configure-module-auth-by-scheme step": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172039590
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176543725
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176620417
+      }
+    ],
+    "11.5 Add the terragrunt init + apply step with per-job error reporting": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172039944
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176627597
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176715148
+      }
+    ],
+    "12.1 Add an actionlint validation workflow/step": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172040407
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176722597
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788178710650
+      }
+    ],
+    "12.2 Add static grep checks for apply flags and secret hygiene": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172040849
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788178720649
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788179022185
+      }
+    ],
+    "13.1 Create fixtures and a plan/dry-run harness for detect + auth + workdir": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172041286
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176723730
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788178711962
+      }
+    ],
+    "13.2 Add integration cases requiring live GitHub/AWS (manual/optional)": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172041679
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788178721875
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788179023528
+      }
+    ],
+    "14. Final checkpoint - all automated tests and static checks pass": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172042014
+      },
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788180078411
+      }
+    ],
+    "2. Implement the path filter (anchored leaf regex)": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172976442
+      }
+    ],
+    "5. Implement the Source_Scheme classifier": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788172977825
+      }
+    ],
+    "3. Implement the Path_Parser (tenant + workDir)": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173329987
+      }
+    ],
+    "4. Implement the matrix builder (cap + empty-set handling)": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788173696932
+      }
+    ],
+    "6. Wire the pure functions into the stdin/stdout CLI": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175281710
+      }
+    ],
+    "8. Implement and unit-test the provision-step logic helpers": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788175740322
+      }
+    ],
+    "10. Author the GitHub Actions workflow YAML (trigger + detect job)": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176109078
+      }
+    ],
+    "11. Author the provision matrix job in the workflow YAML": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788176715707
+      }
+    ],
+    "12. Add workflow static validation (actionlint + grep checks)": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788179022782
+      }
+    ],
+    "13. Add integration/smoke validation fixtures and harness": [
+      {
+        "executionId": "6a23bee0-0a97-4e45-b224-2f1949998813",
+        "chatSessionId": "sess_a80fb996-251c-4394-89d1-dddcc853b837",
+        "timestamp": 1788179024089
+      }
+    ]
+  }
+}

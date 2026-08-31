@@ -1,0 +1,162 @@
+name: provision-on-merge
+
+# Provision tenant platforms when a pull request is merged into main.
+# Req 1.1: run on the pull_request closed event so provisioning follows a
+#          reviewed-and-approved merge.
+# Req 1.4: only PRs whose base branch is main start the workflow.
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+# Least-privilege: the workflow only needs to read repository contents to
+# detect changed leaf units and check out the merge commit.
+permissions:
+  contents: read
+
+jobs:
+  detect:
+    # Req 1.2/1.4: only proceed when the PR was actually merged. A
+    # closed-but-not-merged PR (merged == false) skips this job, so the run
+    # completes successfully without provisioning.
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    # Req 3.4/5.4/5.5: expose the computed matrix and has_units so the
+    # provision job can fan out one leg per changed leaf unit (or be skipped
+    # entirely when no leaf units changed). Both come from the build step.
+    outputs:
+      matrix: ${{ steps.build.outputs.matrix }}
+      has_units: ${{ steps.build.outputs.has_units }}
+    steps:
+      # Req 1.3/1.5: evaluate the merged state before any change detection.
+      # The guard helper fails loudly when merged is neither "true" nor
+      # "false" (indeterminable payload) instead of silently provisioning.
+      - name: Guard merged state
+        env:
+          MERGED: ${{ github.event.pull_request.merged }}
+        run: ./.github/scripts/guard_merged_state.sh
+      # Req 3.1: full history is required so the merge commit's first parent is
+      # present locally for the first-parent diff below.
+      - name: Checkout with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Req 2, 3, 5: compute the set of added/modified leaf units by diffing the
+      # merge commit against its first parent, then reduce it to a JSON matrix.
+      #
+      # git diff writes the changed paths to stdout; detect_leaves.py reads that
+      # list on stdin and writes "matrix=<json>" / "has_units=<bool>" lines to
+      # its stdout, which we redirect into $GITHUB_OUTPUT.
+      #
+      # Req 3.5: if the first-parent diff cannot be performed (shallow clone /
+      # missing history), git diff exits non-zero; we surface a clear error and
+      # fail the job before producing any matrix.
+      - name: Compute changed leaf units
+        id: build
+        env:
+          MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+        run: |
+          set -euo pipefail
+          if ! changed_files="$(git diff --name-only --diff-filter=AM "${MERGE_SHA}^1" "${MERGE_SHA}")"; then
+            echo "::error::change detection could not be completed"
+            exit 1
+          fi
+          printf '%s\n' "$changed_files" | python3 .github/scripts/detect_leaves.py >> "$GITHUB_OUTPUT"
+
+  provision:
+    # Req 2.4/3.4/5.4: skip entirely when detect found no leaf units, so a
+    # root-only PR (or any PR with an empty matrix) provisions nothing.
+    needs: detect
+    if: needs.detect.outputs.has_units == 'true'
+    runs-on: ubuntu-latest
+    # Req 6.1/6.2: bind every leg to the dev GitHub Environment so secrets and
+    # variables resolve exclusively from that environment.
+    environment: dev
+    # Req 7.1/7.2/8.1/8.2/8.3: export the backend variables and AWS session
+    # credentials at the job level so they are available to every step,
+    # including root.hcl's get_env(TG_STATE_BUCKET) / get_env(AWS_REGION) and
+    # the AWS SDK session used by the terragrunt init/apply step. Values are
+    # resolved from the bound dev environment's variables and secrets; GitHub
+    # masks the secret values in logs.
+    env:
+      TG_STATE_BUCKET: ${{ vars.TG_STATE_BUCKET }}
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    # Req 5.1/5.2/5.7/5.8/11.3/11.4/11.5: fan out one leg per changed leaf unit
+    # from the detect matrix. fail-fast: false keeps sibling legs running when
+    # one fails, so the run still reports an overall failure once all complete.
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.detect.outputs.matrix) }}
+    steps:
+      # Checkout first so the helper scripts and the changed leaf files are
+      # present on the runner for the validation and provisioning steps
+      # (tasks 11.3-11.5).
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Req 5.6/4.4: fail this leg early if any matrix field is missing/empty or
+      # the leaf path is malformed, before any Terragrunt or remote-state access.
+      - name: Validate matrix entry
+        env:
+          TENANT: ${{ matrix.tenant }}
+          WORKDIR: ${{ matrix.workDir }}
+          LEAFPATH: ${{ matrix.leafPath }}
+        run: ./.github/scripts/validate_entry.sh
+      # Req 6.3/6.4/7.3/7.4/7.5/8.4/8.5: confirm the always-required dev
+      # environment variables and secrets are present and non-empty before any
+      # Terragrunt or state access. TOKEN/SECURITY_KEY are validated
+      # conditionally by scheme in the auth step (task 11.4), not here.
+      - name: Validate secrets and vars
+        env:
+          TG_STATE_BUCKET: ${{ vars.TG_STATE_BUCKET }}
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: ./.github/scripts/validate_secrets_vars.sh
+      # Req 7.1/7.2: pin the Terraform version so backend init and the AWS
+      # provider generated by root.hcl run against a fixed, reproducible
+      # toolchain rather than a moving latest.
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.8
+      # Pin the Terragrunt version to match the fixed toolchain. Downloading a
+      # specific release avoids drift from a moving reference and keeps every
+      # provision leg reproducible.
+      - name: Install Terragrunt
+        run: |
+          set -euo pipefail
+          curl -sSLo /usr/local/bin/terragrunt \
+            https://github.com/gruntwork-io/terragrunt/releases/download/v0.67.4/terragrunt_linux_amd64
+          chmod +x /usr/local/bin/terragrunt
+          terragrunt --version
+      # Req 9.1-9.7: configure Git auth for the private modules repo based on
+      # the leaf's source scheme, before any terragrunt init/apply. The helper
+      # reads the leaf source, classifies HTTPS vs SSH, and requires the
+      # matching secret (TOKEN for HTTPS, SECURITY_KEY for SSH), failing before
+      # any git/SSH change on a missing secret or unrecognized scheme. TOKEN and
+      # SECURITY_KEY are passed via env: only (never on the command line) and
+      # are never echoed by the helper; GitHub masks them in logs.
+      - name: Configure module auth
+        env:
+          LEAFPATH: ${{ matrix.leafPath }}
+          TOKEN: ${{ secrets.TOKEN }}
+          SECURITY_KEY: ${{ secrets.SECURITY_KEY }}
+        run: ./.github/scripts/configure_module_auth.sh
+      # Req 10.1/10.2/10.3/10.4/10.5/10.6/11.1/11.2: run terragrunt against the
+      # changed leaf. working-directory sets cwd to <tenant>/<env> so the state
+      # key derived from path_relative_to_include() isolates this leaf's state
+      # (Req 10.1). The gate helper runs `terragrunt init` and, only on a zero
+      # init exit, `terragrunt apply -auto-approve -input=false
+      # --terragrunt-non-interactive`; on init failure it skips apply, and on
+      # either failure it emits `::error::...failed for <tenant>/<env>` naming
+      # the WORKDIR (Req 10.2-10.6, 11.1, 11.2). Because working-directory
+      # changes cwd away from the repo root, the helper is referenced via its
+      # absolute path under $GITHUB_WORKSPACE.
+      - name: Terragrunt init + apply
+        working-directory: ${{ matrix.workDir }}
+        env:
+          WORKDIR: ${{ matrix.workDir }}
+        run: "$GITHUB_WORKSPACE/.github/scripts/init_apply_gate.sh"
